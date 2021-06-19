@@ -1,0 +1,6 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceRoot": "src"
+  }
+}
