@@ -1,4 +1,7 @@
 
+build:
+	npx parcel build src/stub.ts
+
 gen-ts-source-code:
 	rm -f openapi.json && wget https://notify.qiyutech.tech/api/openapi.json
 
