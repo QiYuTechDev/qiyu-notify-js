@@ -1,25 +1,18 @@
 {
   "name": "qiyu-notify",
+  "version": "v0.0.1",
   "license": "AGPL",
   "type": "module",
-  "main": "dist/index.js",
-  "browser": "dist/browser.js",
-  "types": "dist/index.d.ts",
-  "targets": {
-    "main": {
-      "outputFormat": "esmodule"
-    },
-    "browser": {
-      "includeNodeModules": true
-    }
-  },
+  "source": "src/stub.ts",
+  "exports": "./dist/notify.modern.js",
+  "main": "./dist/notify.cjs",
+  "module": "./dist/notify.module.js",
+  "unpkg": "./dist/notify.umd.js",
+  "types": "./dist/notify.d.ts",
   "dependencies": {
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "@parcel/packager-ts": "^2.0.0-nightly.727",
-    "@parcel/transformer-typescript-types": "^2.0.0-nightly.727",
-    "parcel": "^2.0.0-beta.3",
-    "typescript": "^4.3.4"
+    "microbundle": "^0.13.3"
   }
 }
