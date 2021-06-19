@@ -1,0 +1,32 @@
+{
+  "name": "qiyu-notify",
+  "version": "v0.0.2",
+  "description": "奇遇推送 JS SDK",
+  "keywords": [
+    "notify",
+    "qyu-notify"
+  ],
+  "homepage": "https://notify.qiyutech.tech",
+  "bugs": {
+    "url": "https://github.com/QiYuTechDev/qiyu-notify-js/issues",
+    "email": "dev@qiyutech.tech"
+  },
+  "license": "AGPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QiYuTechDev/qiyu-notify-js"
+  },
+  "main": "./dist/notify.cjs",
+  "type": "module",
+  "source": "src/stub.ts",
+  "exports": "./dist/notify.modern.js",
+  "module": "./dist/notify.module.js",
+  "unpkg": "./dist/notify.umd.js",
+  "types": "./dist/notify.d.ts",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "microbundle": "^0.13.3"
+  }
+}
