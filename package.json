@@ -1,10 +1,10 @@
 {
   "name": "qiyu-notify",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "description": "奇遇推送 JS SDK",
   "keywords": [
-    "notify",
-    "qyu-notify"
+    "qiyu-notify",
+    "notify"
   ],
   "homepage": "https://notify.qiyutech.tech",
   "bugs": {
