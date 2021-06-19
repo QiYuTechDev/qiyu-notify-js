@@ -1,0 +1,10 @@
+{
+  "name": "qiyu-notify",
+  "license": "AGPL",
+  "type": "module",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.3"
+  }
+}
