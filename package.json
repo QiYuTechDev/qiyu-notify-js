@@ -1,6 +1,6 @@
 {
   "name": "qiyu-notify",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "description": "奇遇推送 JS SDK",
   "keywords": [
     "qiyu-notify",
@@ -17,6 +17,18 @@
     "url": "https://github.com/QiYuTechDev/qiyu-notify-js"
   },
   "main": "./dist/notify.cjs",
+  "files": [
+    "dist/notify.cjs",
+    "dist/notify.cjs.map",
+    "dist/notify.modern.js",
+    "dist/notify.modern.js.map",
+    "dist/notify.module.js",
+    "dist/notify.module.js.map",
+    "dist/notify.umd.js",
+    "dist/notify.umd.js.map",
+    "dist/stub.d.ts",
+    "dist/dt.d.ts"
+  ],
   "type": "module",
   "source": "src/stub.ts",
   "exports": "./dist/notify.modern.js",
