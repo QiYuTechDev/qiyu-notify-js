@@ -103,11 +103,12 @@ export interface EmailMsgDt {
 
 export interface WxAppInfoDt {
     unique_id: string /* 唯一标识 */
-    corp_id: string /* 企业微信公司ID */
-    wx_token: string /* 微信令牌 */
-    aes_key: string /* AES密钥 */
-    agent_id: number /* AgentID */
-    secret: string /* 企业微信Secret */
+    app_name: string /* 应用名称 */
+    corp_id: string /* 企业微信 -> 公司ID */
+    wx_token: string /* 企业微信 -> 微信令牌 */
+    aes_key: string /* 企业微信 -> AES密钥 */
+    agent_id: number /* 企业微信 -> AgentID */
+    secret: string /* 企业微信 -> Secret */
     verified: boolean /* 已验证 */
     verify_time?: string /* 验证时间 */
     ctime: string /* 创建时间 */
@@ -147,11 +148,12 @@ export interface UserWhoamiDt {
 
 
 export interface WxAppCreateDt {
-    corp_id: string /* 企业微信公司ID */
-    wx_token: string /* 微信令牌 */
-    aes_key: string /* AES密钥 */
-    agent_id: number /* AgentID */
-    secret: string /* 企业微信Secret */
+    app_name: string /* 应用名称 */
+    corp_id: string /* 企业微信 -> 公司ID */
+    wx_token: string /* 企业微信 -> 微信令牌 */
+    aes_key: string /* 企业微信 -> AES密钥 */
+    agent_id: number /* 企业微信 -> AgentID */
+    secret: string /* 企业微信 -> Secret */
 }
 
 
