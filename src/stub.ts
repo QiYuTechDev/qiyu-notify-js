@@ -4,24 +4,23 @@ import * as dt from "./dt";
 
 
 export class ApiPing {
-
     /**
      * 健康检查
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {},
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/ping",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -30,70 +29,74 @@ export class ApiPing {
 
 export class ApiDdApp {
 
-
     /**
      * 添加钉钉推送配置
      */
-    public static async do_put<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, dt.DdAppCreateDt>,
+    public static async do_put(
+        args: {
+            body: dt.DdAppCreateDt,
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "PUT",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 删除钉钉推送配置
      */
-    public static async do_delete<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_delete(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "DELETE",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
 }
 
 export class ApiDdAppList {
-
     /**
      * 获取钉钉APP列表
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.DdAppInfoDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.DdAppInfoDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.DdAppInfoDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/app/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -106,20 +109,22 @@ export class ApiDdAppVerify {
     /**
      * 钉钉配置验证
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, dt.DdAppVerifyDt>,
+    public static async do_post(
+        args: {
+            body: dt.DdAppVerifyDt,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/app/verify",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -127,24 +132,26 @@ export class ApiDdAppVerify {
 }
 
 export class ApiDdMsgList {
-
     /**
      * 获取钉钉APP最新消息列表
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.DdMsgDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.DdMsgDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.DdMsgDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/msg/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -157,20 +164,23 @@ export class ApiDdChatwootUniqueId {
     /**
      * 阿里钉钉 Chatwoot WebHook 回调
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.ChatwootWebHookDt>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.ChatwootWebHookDt,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/chatwoot/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -178,24 +188,26 @@ export class ApiDdChatwootUniqueId {
 }
 
 export class ApiDdLinkUniqueId {
-
     /**
      * 发送通知消息
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, { text: string, url: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            path_args: { unique_id: string },
+            query_args: { text: string, url: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/link/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -208,20 +220,22 @@ export class ApiDdRawUniqueId {
     /**
      * 发送通知消息
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, {}>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/raw/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -229,45 +243,49 @@ export class ApiDdRawUniqueId {
 }
 
 export class ApiDdNotifyUniqueId {
-
     /**
      * 发送通知消息
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, { text: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            path_args: { unique_id: string },
+            query_args: { text: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 发送通知消息
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.NotifyArgs>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.NotifyArgs,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/dd/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -276,70 +294,74 @@ export class ApiDdNotifyUniqueId {
 
 export class ApiEmailApp {
 
-
     /**
      * 添加电子邮箱
      */
-    public static async do_put<FailureRet = {}>(
-        args: GenRequestArgs<{}, { email: string }, {}, {}>,
+    public static async do_put(
+        args: {
+            query_args: { email: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "PUT",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 删除电子邮箱推送配置
      */
-    public static async do_delete<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_delete(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "DELETE",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
 }
 
 export class ApiEmailAppList {
-
     /**
      * 获取所有的电子邮箱配置
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.EmailAppInfoDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.EmailAppInfoDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.EmailAppInfoDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/app/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -352,20 +374,22 @@ export class ApiEmailAppVerify {
     /**
      * 验证电子邮箱
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, dt.EmailVerifyArgs>,
+    public static async do_post(
+        args: {
+            body: dt.EmailVerifyArgs,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/app/verify",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -373,24 +397,26 @@ export class ApiEmailAppVerify {
 }
 
 export class ApiEmailMsgList {
-
     /**
      * 获取电子邮箱的邮件信息
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.EmailMsgDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.EmailMsgDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.EmailMsgDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/msg/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -398,45 +424,49 @@ export class ApiEmailMsgList {
 }
 
 export class ApiEmailNotifyUniqueId {
-
     /**
      * 发送通知消息
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, { text: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            path_args: { unique_id: string },
+            query_args: { text: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 发送通知消息
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.NotifyArgs>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.NotifyArgs,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -449,20 +479,23 @@ export class ApiEmailChatwootUniqueId {
     /**
      * 邮箱 Chatwoot WebHook 回调
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.ChatwootWebHookDt>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.ChatwootWebHookDt,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/email/chatwoot/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -470,71 +503,119 @@ export class ApiEmailChatwootUniqueId {
 }
 
 export class ApiTplApp {
-
+    /**
+     * 获取自定义模版APP详情
+     */
+    public static async do_get(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
+        success_cb: (resp: Response) => Promise<dt.TplAppInfoDt> = null,
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.TplAppInfoDt> {
+        return await doRequest({
+            method: "GET",
+            base_url: "https://notify.qiyutech.tech",
+            path_url: "/api/tpl/app",
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
+        }, success_cb, failure_cb);
+    }
 
     /**
      * 创建自定义模版APP
      */
-    public static async do_put<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, dt.TplAppCreateDt>,
+    public static async do_put(
+        args: {
+            body: dt.TplAppCreateDt,
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.TplAppInfoDt> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.TplAppInfoDt | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.TplAppInfoDt> {
         return await doRequest({
             method: "PUT",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/tpl/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 删除自定义模版推送配置
      */
-    public static async do_delete<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_delete(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "DELETE",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/tpl/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
-
+    /**
+     * 更新模版APP
+     */
+    public static async do_patch(
+        args: {
+            body: dt.TplAppUpdateDt,
+            security: SecurityParamsType,
+        },
+        success_cb: (resp: Response) => Promise<dt.TplAppInfoDt> = null,
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.TplAppInfoDt> {
+        return await doRequest({
+            method: "PATCH",
+            base_url: "https://notify.qiyutech.tech",
+            path_url: "/api/tpl/app",
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
+        }, success_cb, failure_cb);
+    }
 }
 
 export class ApiTplAppList {
-
     /**
      * 获取所有的自定义模版推送的配置
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.TplAppInfoDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.TplAppInfoDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.TplAppInfoDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/tpl/app/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -547,20 +628,22 @@ export class ApiTplNotifyUniqueId {
     /**
      * 发送自定义模版通知消息
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, {}>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/tpl/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -568,24 +651,23 @@ export class ApiTplNotifyUniqueId {
 }
 
 export class ApiUserToken {
-
     /**
      * 获取一个新的Token
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {},
         success_cb: (resp: Response) => Promise<dt.UserTokenDt> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.UserTokenDt | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.UserTokenDt> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/user/token",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -593,24 +675,23 @@ export class ApiUserToken {
 }
 
 export class ApiUserWhoami {
-
     /**
      * 获取自己的用户名
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {},
         success_cb: (resp: Response) => Promise<dt.UserWhoamiDt> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.UserWhoamiDt | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.UserWhoamiDt> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/user/whoami",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -623,20 +704,23 @@ export class ApiWxChatwootUniqueId {
     /**
      * 企业微信 Chatwoot WebHook 回调
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.ChatwootWebHookDt>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.ChatwootWebHookDt,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/chatwoot/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -649,20 +733,23 @@ export class ApiWxMdUniqueId {
     /**
      * 发送 Markdown 通知消息到企业微信
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.NotifyArgs>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.NotifyArgs,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/md/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -670,45 +757,49 @@ export class ApiWxMdUniqueId {
 }
 
 export class ApiWxNotifyUniqueId {
-
     /**
      * 发送通知消息
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, { text: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            path_args: { unique_id: string },
+            query_args: { text: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 发送通知消息
      */
-    public static async do_post<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, {}, {}, dt.NotifyArgs>,
+    public static async do_post(
+        args: {
+            path_args: { unique_id: string },
+            body: dt.NotifyArgs,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "POST",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/notify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -717,70 +808,74 @@ export class ApiWxNotifyUniqueId {
 
 export class ApiWxApp {
 
-
     /**
      * 添加企业微信推送配置
      */
-    public static async do_put<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, dt.WxAppCreateDt>,
+    public static async do_put(
+        args: {
+            body: dt.WxAppCreateDt,
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.WxAppInfoDt> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.WxAppInfoDt | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.WxAppInfoDt> {
         return await doRequest({
             method: "PUT",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
     /**
      * 删除企业微信配置
      */
-    public static async do_delete<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_delete(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "DELETE",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/app",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
-
 
 }
 
 export class ApiWxAppList {
-
     /**
      * 企业微信配置列表
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, {}, {}, {}>,
+    public static async do_get(
+        args: {
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.WxAppInfoDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.WxAppInfoDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.WxAppInfoDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/app/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -788,24 +883,26 @@ export class ApiWxAppList {
 }
 
 export class ApiWxVerifyUniqueId {
-
     /**
      * 企业微信验证
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{ unique_id: string }, { timestamp: string, msg_signature: string, nonce: string, echostr: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            path_args: { unique_id: string },
+            query_args: { timestamp: string, msg_signature: string, nonce: string, echostr: string },
+        },
         success_cb: (resp: Response) => Promise<{}> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<{} | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<{}> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/verify/{unique_id}",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 
@@ -813,24 +910,26 @@ export class ApiWxVerifyUniqueId {
 }
 
 export class ApiWxMsgList {
-
     /**
      * 企业微信消息列表
      */
-    public static async do_get<FailureRet = {}>(
-        args: GenRequestArgs<{}, { unique_id: string }, {}, {}>,
+    public static async do_get(
+        args: {
+            query_args: { unique_id: string },
+            security: SecurityParamsType,
+        },
         success_cb: (resp: Response) => Promise<dt.WxMsgDt[]> = null,
-        failure_cb: (resp: Response) => Promise<FailureRet> = null,
-    ): Promise<dt.WxMsgDt[] | FailureRet> {
+        failure_cb: (resp: Response) => Promise<any> = null,
+    ): Promise<dt.WxMsgDt[]> {
         return await doRequest({
             method: "GET",
             base_url: "https://notify.qiyutech.tech",
             path_url: "/api/wx/msg/list",
-            path_args: args.path_args,
-            query_args: args.query_args,
-            header: args.header,
-            body: args.body,
-            security: args.security,
+            path_args: args["path_args"] || null,
+            query_args: args["query_args"] || null,
+            header: args["header"] || null,
+            body: args["body"] || null,
+            security: args["security"] || null,
         }, success_cb, failure_cb);
     }
 

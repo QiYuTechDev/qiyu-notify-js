@@ -1,13 +1,11 @@
 // 这个文件由 https://code.qiyutech.tech/docs 自动生成
 // 请不要使用手工修改
 
-
 export interface DdAppCreateDt {
     app_name: string /* 应用名称 */
     dd_ak: string /* 钉钉访问令牌 */
     dd_sk?: string /* 钉钉加密密钥 */
 }
-
 
 export interface DdAppInfoDt {
     unique_id: string /* 唯一标识 */
@@ -18,12 +16,10 @@ export interface DdAppInfoDt {
     ctime: string /* 创建时间 */
 }
 
-
 export interface DdAppVerifyDt {
     unique_id: string /* 唯一标识 */
     code: string /* 验证码 */
 }
-
 
 export interface DdMsgDt {
     src_ip: string /* 来源IP */
@@ -32,31 +28,26 @@ export interface DdMsgDt {
     ctime: string /* 发送时间 */
 }
 
-
 export interface ChatwootSenderDt {
     id?: string /* 发送者ID */
     name?: string /* 发送者的名称 */
     email?: string /* 电子邮箱 */
 }
 
-
 export interface ChatwootContactDt {
     id?: string /* 联系人ID */
     name?: string /* 联系人名称 */
 }
-
 
 export interface ChatwootConversationDt {
     display_id?: string /* Display Id */
     additional_attributes?: object /* 其他属性 */
 }
 
-
 export interface ChatwootAccountDt {
     id?: string /* 账号ID */
     name?: string /* 账号名称 */
 }
-
 
 export interface ChatwootWebHookDt {
     event: string /* 事件名称 */
@@ -73,11 +64,9 @@ export interface ChatwootWebHookDt {
     account?: ChatwootAccountDt /* 账号信息 */
 }
 
-
 export interface NotifyArgs {
     content: string /* 通知内容 */
 }
-
 
 export interface EmailAppInfoDt {
     unique_id: string /* 唯一标识 */
@@ -86,12 +75,10 @@ export interface EmailAppInfoDt {
     ctime: string /* 创建时间 */
 }
 
-
 export interface EmailVerifyArgs {
     unique_id: string /* 唯一标识 */
     code: string /* 验证码 */
 }
-
 
 export interface EmailMsgDt {
     src_ip: string /* 来源IP */
@@ -99,7 +86,6 @@ export interface EmailMsgDt {
     content: string /* 消息内容 */
     ctime: string /* 发送时间 */
 }
-
 
 export interface WxAppInfoDt {
     unique_id: string /* 唯一标识 */
@@ -114,18 +100,16 @@ export interface WxAppInfoDt {
     ctime: string /* 创建时间 */
 }
 
-
 export interface TplAppInfoDt {
-    app_name: string /* 模版应用名称 */
     unique_id: string /* 唯一标识 */
+    app_name: string /* 模版应用名称 */
+    tpl_code: string /* 模版 */
+    comment: string /* 用备注 */
     wx_app?: WxAppInfoDt /* 微信应用信息 */
     email_app?: EmailAppInfoDt /* 邮箱应用信息 */
     dd_app?: DdAppInfoDt /* 钉钉应用信息 */
-    tpl_code?: string /* 模版 */
-    comment?: string /* 备注 */
     ctime: string /* 创建时间 */
 }
-
 
 export interface TplAppCreateDt {
     app_name: string /* 模版应用名称 */
@@ -136,16 +120,23 @@ export interface TplAppCreateDt {
     comment: string /* 用备注 */
 }
 
+export interface TplAppUpdateDt {
+    app_name: string /* 模版应用名称 */
+    wx_app?: string /* 微信应用UUID */
+    dd_app?: string /* 钉钉应用UUID */
+    email_app?: string /* 邮箱应用UUID */
+    tpl_code: string /* 模版 */
+    comment: string /* 用备注 */
+    unique_id: string /* 唯一标识 */
+}
 
 export interface UserTokenDt {
     token: string /* token */
 }
 
-
 export interface UserWhoamiDt {
     username?: string /* 用户的名称 */
 }
-
 
 export interface WxAppCreateDt {
     app_name: string /* 应用名称 */
@@ -156,12 +147,10 @@ export interface WxAppCreateDt {
     secret: string /* 企业微信 -> Secret */
 }
 
-
 export interface WxMsgDt {
     src_ip: string /* IP */
     msg_type: string /* 消息类型 */
     content: string /* 消息内容 */
     ctime: string /* 发送时间 */
 }
-
 
