@@ -1,6 +1,6 @@
 {
   "name": "qiyu-notify",
-  "version": "v0.6.1",
+  "version": "v0.6.2",
   "description": "奇遇推送 Javascript SDK",
   "keywords": [
     "qiyu-notify",
@@ -36,9 +36,9 @@
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.2.0"
   },
   "devDependencies": {
-    "microbundle": "^0.13.3"
+    "microbundle": "^0.14.2"
   }
 }
